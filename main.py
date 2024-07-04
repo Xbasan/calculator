@@ -11,104 +11,32 @@ class MangaApp(App):
 
         self.lb = Label(text="0")
         self.answer = 0
+        self.pre_res = Label(text='0')
+        self.pre_res.color ="red"
+        self.pre_res.font_size = 50
+        self.lb.font_size = 50
 
         
-    def btn_clic_1(self, instance):
+    def btn_clic(self, instance):
         if self.lb.text == "0":
-            self.lb.text = '1'
+            self.lb.text = instance.text
         else:
-            self.lb.text += '1'    
-    
-    def btn_clic_2(self, instance):
-        if self.lb.text == "0":
-            self.lb.text = '2'
-        else:
-            self.lb.text += '2'
-            
-    def btn_clic_3(self, instance):
-        if self.lb.text == "0":
-            self.lb.text = '3'
-        else:
-            self.lb.text += '3'
-
-            
-    def btn_clic_4(self, instance):
-        if self.lb.text == "0":
-            self.lb.text = '4'
-        else:
-            self.lb.text += '4'
-            
-    def btn_clic_5(self, instance):
-        if self.lb.text == "0":
-            self.lb.text = '5'
-        else:
-            self.lb.text += '5'
-
-
-    def btn_clic_6(self, instance):
-        if self.lb.text == "0":
-            self.lb.text = '6'
-        else:
-            self.lb.text += '6'
-
-    def btn_clic_7(self, instance):
-        if self.lb.text == "0":
-            self.lb.text = '7'
-        else:
-            self.lb.text += '7'
-
-    def btn_clic_8(self, instance):
-        if self.lb.text == "0":
-            self.lb.text = '8'
-        else:
-            self.lb.text += '8'
-            
-    def btn_clic_9(self, instance):
-        if self.lb.text == "0":
-            self.lb.text = '9'
-        else:
-            self.lb.text += '9'
-    
-
-    def btn_clic_0(self, instance):
-        if self.lb.text == "0":
-            pass
-        else:
-            self.lb.text += '0'
-
-    def btn_clic_mul(self, instance):
-        if self.lb.text == "0":
-            pass
-        else:
-            self.lb.text += '*'
-
-    def btn_clic_divis(self, instance):
-        if self.lb.text == "0":
-            pass
-        else:
-            self.lb.text += '/'
-            
-    def btn_clic_minus(self, instance):
-        if self.lb.text == "0":
-            pass
-        else:
-            self.lb.text += '-'
-            
-    def btn_clic_plus(self, instance):
-        if self.lb.text == "0":
-            pass
-        else:
-            self.lb.text += '+'
+            self.lb.text += instance.text
+        try:
+            self.pre_res.text = str(eval(self.lb.text))     
+        except SyntaxError :
+            self.pre_res.text ="None"
 
     def btn_clic_del(self, num=0):
         if self.lb.text == "0":
             pass
         else:
             self.lb.text = self.lb.text[:-1]
+            if self.lb.text == "":
+                self.lb.text = "0"
 
     def btn_clic_cler(self, instance):
         self.lb.text = '0'
-
         
     def res(self, instance):
         try:
@@ -118,53 +46,53 @@ class MangaApp(App):
     
     def build(self):
         
-        btn_1  = Button(text='1', on_press=self.btn_clic_1)
-        btn_2  = Button(text='2', on_press=self.btn_clic_2)
-        btn_3  = Button(text='3', on_press=self.btn_clic_3)
+        btn_1  = Button(text='1', font_size=60, on_press=self.btn_clic)
+        btn_2  = Button(text='2', font_size=60, on_press=self.btn_clic)
+        btn_3  = Button(text='3', font_size=60, on_press=self.btn_clic)
 
         lan_btn_1 = BoxLayout()
         lan_btn_1.add_widget(btn_1)
         lan_btn_1.add_widget(btn_2)
         lan_btn_1.add_widget(btn_3)
         
-        btn_4  = Button(text='4', on_press=self.btn_clic_4)
-        btn_5  = Button(text='5', on_press=self.btn_clic_5)
-        btn_6  = Button(text='6', on_press=self.btn_clic_6)
+        btn_4  = Button(text='4', font_size=60, on_press=self.btn_clic)
+        btn_5  = Button(text='5', font_size=60, on_press=self.btn_clic)
+        btn_6  = Button(text='6', font_size=60, on_press=self.btn_clic)
 
         lan_btn_2 = BoxLayout()
         lan_btn_2.add_widget(btn_4)
         lan_btn_2.add_widget(btn_5)
         lan_btn_2.add_widget(btn_6)
         
-        btn_7  = Button(text='7', on_press=self.btn_clic_7)
-        btn_8  = Button(text='8', on_press=self.btn_clic_8)
-        btn_9  = Button(text='9', on_press=self.btn_clic_9)
+        btn_7  = Button(text='7', font_size=60, on_press=self.btn_clic)
+        btn_8  = Button(text='8', font_size=60, on_press=self.btn_clic)
+        btn_9  = Button(text='9', font_size=60, on_press=self.btn_clic)
 
         lan_btn_3 = BoxLayout()
         lan_btn_3.add_widget(btn_7)
         lan_btn_3.add_widget(btn_8)
         lan_btn_3.add_widget(btn_9)
         
-        btn_0  = Button(text='0', on_press=self.btn_clic_0)
-        btn_plus  = Button(text='+', on_press=self.btn_clic_plus)
-        btn_minus  = Button(text='-', on_press=self.btn_clic_minus)
-
+        btn_0  = Button(text='0', font_size=60, on_press=self.btn_clic)
+        btn_plus  = Button(text='+', font_size=60, on_press=self.btn_clic)
+        btn_minus  = Button(text='-', font_size=60, on_press=self.btn_clic)
+        
         lan_btn_4 = BoxLayout()
         lan_btn_4.add_widget(btn_0)
         lan_btn_4.add_widget(btn_plus)
         lan_btn_4.add_widget(btn_minus)
         
-        btn_mul  = Button(text='*', on_press=self.btn_clic_mul)
-        btn_divis  = Button(text='/', on_press=self.btn_clic_divis)
-        btn_res = Button(text="=", on_press=self.res)
+        btn_mul  = Button(text='*', font_size=60, on_press=self.btn_clic)
+        btn_divis  = Button(text='/', font_size=60, on_press=self.btn_clic)
+        btn_res = Button(text="=", font_size=60, on_press=self.res)
 
         lan_btn_5 = BoxLayout()
         lan_btn_5.add_widget(btn_mul)
         lan_btn_5.add_widget(btn_divis)
         lan_btn_5.add_widget(btn_res)
 
-        btn_del = Button(text='C', on_press=self.btn_clic_del)
-        btn_cler = Button(text='X', on_press=self.btn_clic_cler)
+        btn_del = Button(text='C', font_size=60, on_press=self.btn_clic_del)
+        btn_cler = Button(text='X', font_size=60, on_press=self.btn_clic_cler)
         
         lan_btn_6 = BoxLayout()
         lan_btn_6.add_widget(btn_del)
@@ -184,6 +112,7 @@ class MangaApp(App):
         bl.orientation = 'vertical'
         
         bl.add_widget(self.lb)
+        bl.add_widget(self.pre_res)
         bl.add_widget(kv)
 
         return bl
